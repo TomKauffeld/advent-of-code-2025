@@ -43,6 +43,25 @@ namespace AdventOfCode.Core.Helpers
 
             return result;
         }
+        
+        public static async Task<List<List<int>>> GetDigits(int day, bool test = false)
+        {
+            List<List<int>> result = [];
+
+            await using FileStream fileStream = GetInputFile(day, test);
+            using StreamReader reader = new(fileStream);
+
+            while (await reader.ReadLineAsync() is { } line)
+            {
+                line = line.Trim();
+                if (line.Length < 1)
+                    continue;
+                List<int> items = line.Select(c => c - '0').ToList();
+                result.Add(items);
+            }
+
+            return result;
+        }
 
         public static async Task<Tuple<List<int>, List<int>>> GetDualNumbers(int day, bool test = false)
         {
