@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/AdventOfCode.Data/" />
+  <Folder Name="/AdventOfCode.Data/Day01/">
+    <File Path="AdventOfCode.Data/day01/input.txt" />
+    <File Path="AdventOfCode.Data/day01/test.txt" />
+  </Folder>
+  <Folder Name="/AdventOfCode.Data/Day02/">
+    <File Path="AdventOfCode.Data/day02/input.txt" />
+    <File Path="AdventOfCode.Data/day02/test.txt" />
+  </Folder>
+  <Folder Name="/AdventOfCode.Data/Day03/">
+    <File Path="AdventOfCode.Data/day03/input.txt" />
+    <File Path="AdventOfCode.Data/day03/test.txt" />
+  </Folder>
+  <Project Path="AdventOfCode.Core/AdventOfCode.Core.csproj" />
+  <Project Path="AdventOfCode.Day01/AdventOfCode.Day01.csproj" />
+  <Project Path="AdventOfCode.Day02/AdventOfCode.Day02.csproj" />
+  <Project Path="AdventOfCode.Day03/AdventOfCode.Day03.csproj" />
+</Solution>
