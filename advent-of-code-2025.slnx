@@ -20,10 +20,15 @@
     <File Path="AdventOfCode.Data\day05\input.txt" />
     <File Path="AdventOfCode.Data\day05\test.txt" />
   </Folder>
+  <Folder Name="/AdventOfCode.Data/Day06/">
+    <File Path="AdventOfCode.Data\day06\input.txt" />
+    <File Path="AdventOfCode.Data\day06\test.txt" />
+  </Folder>
   <Project Path="AdventOfCode.Core/AdventOfCode.Core.csproj" />
   <Project Path="AdventOfCode.Day01/AdventOfCode.Day01.csproj" />
   <Project Path="AdventOfCode.Day02/AdventOfCode.Day02.csproj" />
   <Project Path="AdventOfCode.Day03/AdventOfCode.Day03.csproj" />
   <Project Path="AdventOfCode.Day04/AdventOfCode.Day04.csproj" />
   <Project Path="AdventOfCode.Day05/AdventOfCode.Day05.csproj" />
+  <Project Path="AdventOfCode.Day06/AdventOfCode.Day06.csproj" />
 </Solution>

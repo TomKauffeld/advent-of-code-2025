@@ -196,7 +196,7 @@ namespace AdventOfCode.Core.Helpers
             {
                 try
                 {
-                    line = line.Trim();
+                    //line = line.Trim();
                     if (line.Length < 1)
                         continue;
                     if (width == 0)
