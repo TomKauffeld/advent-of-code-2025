@@ -24,6 +24,14 @@
     <File Path="AdventOfCode.Data\day06\input.txt" />
     <File Path="AdventOfCode.Data\day06\test.txt" />
   </Folder>
+  <Folder Name="/AdventOfCode.Data/Day07/">
+    <File Path="AdventOfCode.Data\day07\input.txt" />
+    <File Path="AdventOfCode.Data\day07\test.txt" />
+  </Folder>
+  <Folder Name="/AdventOfCode.Data/Day08/">
+    <File Path="AdventOfCode.Data\day08\input.txt" />
+    <File Path="AdventOfCode.Data\day08\test.txt" />
+  </Folder>
   <Project Path="AdventOfCode.Core/AdventOfCode.Core.csproj" />
   <Project Path="AdventOfCode.Day01/AdventOfCode.Day01.csproj" />
   <Project Path="AdventOfCode.Day02/AdventOfCode.Day02.csproj" />
@@ -31,4 +39,6 @@
   <Project Path="AdventOfCode.Day04/AdventOfCode.Day04.csproj" />
   <Project Path="AdventOfCode.Day05/AdventOfCode.Day05.csproj" />
   <Project Path="AdventOfCode.Day06/AdventOfCode.Day06.csproj" />
+  <Project Path="AdventOfCode.Day07/AdventOfCode.Day07.csproj" />
+  <Project Path="AdventOfCode.Day08/AdventOfCode.Day08.csproj" />
 </Solution>
