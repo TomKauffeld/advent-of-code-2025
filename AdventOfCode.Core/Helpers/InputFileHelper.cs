@@ -4,7 +4,7 @@ namespace AdventOfCode.Core.Helpers
 {
     public static partial class InputFileHelper
     {
-        public static string GetInputFilePath(int day, bool test = false)
+        public static string GetFilePath(int day, string file)
         {
             return Path.Combine(
                 Environment.CurrentDirectory,
@@ -14,8 +14,13 @@ namespace AdventOfCode.Core.Helpers
                 "..",
                 "AdventOfCode.Data",
                 $"day{day:00}",
-                test ? "test.txt" : "input.txt"
+                file
             );
+        }
+        
+        public static string GetInputFilePath(int day, bool test = false)
+        {
+            return GetFilePath(day, test ? "test.txt" : "input.txt");
         }
 
         public static FileStream GetInputFile(int day, bool test = false)
@@ -60,6 +65,25 @@ namespace AdventOfCode.Core.Helpers
                 result.Add(items);
             }
 
+            return result;
+        }
+
+        public static async Task<List<(int, int)>> GetDualNumbers(int day, char separator, bool test = false)
+        {
+            List<(int, int)> result = [];
+
+            await using FileStream fileStream = GetInputFile(day, test);
+            using StreamReader reader = new(fileStream);
+            while (await reader.ReadLineAsync() is { } line)
+            {
+                line = line.Trim();
+                string[] parts = line.Split(separator);
+                if (parts.Length == 2)
+                {
+                    result.Add((int.Parse(parts[0]), int.Parse(parts[1])));
+                }
+            }
+            
             return result;
         }
 
