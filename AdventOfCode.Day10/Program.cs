@@ -95,57 +95,70 @@ namespace AdventOfCode.Day10
             }
             Console.WriteLine($"Part 1: {total}");
         }
-
-
-        private static bool FoundSolution(int[] target, int[][] buttons, int count)
-        {
-            if (count < 1)
-                return target.All(i => i == 0);
-            if (target.Any(i => i < 0))
-                return false;
-            foreach (int[] currentOption in buttons)
-            {
-                int[] currentCounter = target.ToArray();
-                foreach (int button in currentOption)
-                    --currentCounter[button];
-                bool found = FoundSolution(currentCounter, buttons, count - 1);
-                if (found)
-                    return true;
-            }
-            return false;
-        }
+        
 
         
-        private static int MinPresses(int[] target, int[][] buttons, int focus = 0)
+        private static int MinPresses(int[] target, int[][] buttons, int focus = 0, int maxPresses = int.MaxValue)
         {
-            int count = target.Max();
-            int maxLoop = target.Sum();
-            
             if (target.Any(i => i < 0))
-                return -1;
+                return int.MaxValue;
             if (focus >= target.Length)
                 return 0;
             if (target[focus] == 0)
-                return MinPresses(target, buttons, focus + 1);
+                return MinPresses(target, buttons.Where(b => b.All(c => c >= focus)).ToArray(), focus + 1, maxPresses);
+            if (maxPresses < target.Sum())
+                return int.MaxValue;
+            int current = maxPresses;
+            foreach (int[] option in buttons.OrderByDescending(b => b.Length))
+            {
+                if (option.Contains(focus) && option.All(b => b >= focus))
+                {
+                    int[] localTarget = target.ToArray();
+                    foreach (int button in option)
+                        --localTarget[button];
+                    int found = MinPresses(localTarget, buttons, focus, current - 1);
+                    if (found < current)
+                        current = found;
+                }
+            }
             
-            List<int> possibles = [];
+            if (current >= maxPresses)
+                return int.MaxValue;
             
+            return current + 1;
+        }
+
+        private static void SortColumn(ref int[,] matrix, int column)
+        {
+            for (int i = 0; i < matrix.GetLength(0); ++i)
+            {
+                
+            }
+        }
+
+        private static void Solver(int[][] buttons, int[] target)
+        {
+            int max = buttons.Max(b => b.Max());
+            int[,] matrix = new int[buttons.Length + 1, max + 1];
             for (int i = 0; i < buttons.Length; ++i)
             {
-                if (buttons[i].Contains(focus) && buttons[i].All(b => b >= focus))
-                    possibles.Add(i);
+                foreach (int button in buttons[i])
+                {
+                    matrix[i, button] = 1;
+                }
             }
-            if (!possibles.Any())
-                return -1;
-            
-            for (int i = 0; i < possibles.Count; ++i)
+            for (int i = 0; i < target.Length; ++i)
             {
-                int[] local = new int[possibles.Count];
-                local[i] = target[focus];
+                matrix[buttons.Length, i] = target[i];
+            }
+            
+
+            for (int i = 0; i < matrix.GetLength(1); ++i)
+            {
+                
             }
             
             
-            return -2;
         }
         
 
@@ -156,9 +169,7 @@ namespace AdventOfCode.Day10
             //Parallel.ForEach(items, item =>
             foreach ((int[] target, int[][] buttons) item in items)
             {
-                int result = MinPresses(item.target, item.buttons);
-                Console.WriteLine($"Found: {result}");
-                Interlocked.Add(ref total, result);
+                Solver(item.buttons, item.target);
             }
             //);
             Console.WriteLine($"Part 2: {total}");
